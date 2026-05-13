@@ -730,9 +730,9 @@ func TestListSessionsOnSocketAllPanes(t *testing.T) {
 			return "alpha\nbeta", nil
 		case "list-panes":
 			switch args[2] {
-			case "alpha":
+			case "alpha:":
 				return "%1\n%3", nil
-			case "beta":
+			case "beta:":
 				return "%7", nil
 			default:
 				return "", errors.New("unexpected session")

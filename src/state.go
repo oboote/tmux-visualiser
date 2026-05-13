@@ -244,7 +244,7 @@ func listSessionsOnSocket(ctx context.Context, cfg config, target socketTarget) 
 }
 
 func listPaneIDs(ctx context.Context, cfg config, socketPath string, session string) ([]string, error) {
-	out, err := runTmuxOnSocketFn(ctx, cfg, socketPath, "list-panes", "-t", session, "-F", "#{pane_id}")
+	out, err := runTmuxOnSocketFn(ctx, cfg, socketPath, "list-panes", "-t", session+":", "-F", "#{pane_id}")
 	if err != nil {
 		return nil, err
 	}
@@ -269,7 +269,7 @@ func listPaneIDs(ctx context.Context, cfg config, socketPath string, session str
 }
 
 func activePaneID(ctx context.Context, cfg config, socketPath string, session string) (string, error) {
-	out, err := runTmuxOnSocketFn(ctx, cfg, socketPath, "list-panes", "-t", session, "-F", "#{pane_active} #{pane_id}")
+	out, err := runTmuxOnSocketFn(ctx, cfg, socketPath, "list-panes", "-t", session+":", "-F", "#{pane_active} #{pane_id}")
 	if err != nil {
 		return "", err
 	}
